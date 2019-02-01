@@ -18,24 +18,30 @@ public class Stack1 {
 
     Stack1(String top) {
         this.size = top.length();
+        System.out.println(size);
         this.array = new Object[size];
 
-        for (int i = 0; i < top.length(); i++) {
+        for (int i = 0; i < array.length; i++) {
             element = top.charAt(i);
             if (element == '(' || element == '[' || element == '{') {
                 push(element);
                 post = element;
             }
+            
             if (element == ')' && post == '(') {
                 pop();
-                post = (char) array[i];
+               // post = (char) array[i];
+                System.out.println("Previous "+post);
             }
             if (element == ']' && post == '[') {
                 pop();
-                post = (char) array[i];
+                //post = (char) array[i];
+                System.out.println("Previous "+post);
             }
             if (element == '}' && post == '{') {
-                
+                pop();
+               // post = (char) array[i];
+                System.out.println("Previous "+post);
             }
         }
         if (isEmpty())
@@ -52,7 +58,7 @@ public class Stack1 {
     }
 
     public boolean isEmpty() {
-        return (top == -1);
+        return (top == 0);
     }
 
     public Object pop() {
@@ -62,9 +68,10 @@ public class Stack1 {
             return null;
         } else {
             System.out.println("top is " + top);
+            post=(char)array[top--];
             return array[top--];
         }
-        //  System.out.println(top);
+       
     }
 
 }
